@@ -11,10 +11,9 @@ export default function Navbar({ onOpenShare }: NavbarProps) {
 
   const navLinks = [
     { label: 'Official Links', href: '#links' },
-    { label: 'Social Updates', href: '#social-updates' },
-    { label: 'Community Updates', href: '#community-updates' },
+    { label: 'Latest Uploads', href: '#latest-uploads' },
     { label: 'Rate Sami', href: '#rating' },
-    { label: 'Reader Feedback', href: '#feedback' },
+    { label: 'Fan Feedback', href: '#feedback' },
   ];
 
   return (
@@ -36,9 +35,11 @@ export default function Navbar({ onOpenShare }: NavbarProps) {
             className="text-xl sm:text-2xl font-black tracking-wider text-white group-hover:text-amber-400 transition-colors uppercase"
             style={{ fontFamily: "'Rajdhani', sans-serif" }}
           >
-            SAMI FURY
+            SAMI FURY HUB
           </span>
-          <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse inline-block" title="Official Verified Page" />
+          <span className="hidden sm:inline-block px-2 py-0.5 text-[10px] font-black tracking-wider rounded-md bg-amber-400 text-slate-950 uppercase">
+            HUB
+          </span>
         </a>
 
         {/* Zone 2: Navigation links */}

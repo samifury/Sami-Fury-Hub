@@ -2,8 +2,7 @@ import { useState } from 'react';
 import Navbar from './components/Navbar.tsx';
 import HeroSection from './components/HeroSection.tsx';
 import LinksSection from './components/LinksSection.tsx';
-import SocialUpdatesSection from './components/SocialUpdatesSection.tsx';
-import CommunityUpdatesSection from './components/CommunityUpdatesSection.tsx';
+import LatestUploadsSection from './components/LatestUploadsSection.tsx';
 import RatingSection from './components/RatingSection.tsx';
 import FeedbackSection from './components/FeedbackSection.tsx';
 import ShareModal from './components/ShareModal.tsx';
@@ -12,8 +11,6 @@ import Toast from './components/Toast.tsx';
 
 import { 
   INITIAL_SOCIAL_LINKS, 
-  INITIAL_SOCIAL_UPDATES, 
-  INITIAL_COMMUNITY_UPDATES, 
   INITIAL_READER_FEEDBACK 
 } from './data/creatorData.ts';
 import { ReaderFeedback } from './types/index.ts';
@@ -22,10 +19,10 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState<string>('');
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
-  // Reader feedback state with localStorage persistence
+  // Fan feedback state - starts 100% clean with zero fake messages
   const [feedbacks, setFeedbacks] = useState<ReaderFeedback[]>(() => {
     try {
-      const saved = localStorage.getItem('sami_fury_reader_feedbacks_v2');
+      const saved = localStorage.getItem('sami_fury_fan_feedback_clean');
       if (saved) return JSON.parse(saved);
     } catch {
       // fallback
@@ -44,7 +41,7 @@ export default function App() {
     const updated = [newFb, ...feedbacks];
     setFeedbacks(updated);
     try {
-      localStorage.setItem('sami_fury_reader_feedbacks_v2', JSON.stringify(updated));
+      localStorage.setItem('sami_fury_fan_feedback_clean', JSON.stringify(updated));
     } catch {
       // ignore
     }
@@ -62,7 +59,7 @@ export default function App() {
       />
 
       <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 py-2">
-        {/* Hero Section: Exact Logo Mascot, YouTube Spotlight & 4 Community Stats */}
+        {/* Hero Section: Exact Logo Mascot, YouTube Spotlight & Real Community Stats */}
         <HeroSection
           onOpenShare={() => setIsShareModalOpen(true)}
           showToast={showToast}
@@ -75,24 +72,17 @@ export default function App() {
           isBioMode={false}
         />
 
-        {/* 2. Social Updates Section (YouTube, Instagram, Facebook Releases) */}
-        <SocialUpdatesSection
-          updates={INITIAL_SOCIAL_UPDATES}
+        {/* 2. Real Latest YouTube Uploads Section */}
+        <LatestUploadsSection
           showToast={showToast}
         />
 
-        {/* 3. Community Updates Section (Sami's Empire Discord, SMP Whitelist & Events) */}
-        <CommunityUpdatesSection
-          updates={INITIAL_COMMUNITY_UPDATES}
-          showToast={showToast}
-        />
-
-        {/* 4. Creator Rating Tier: Choose Me (Bad, Good, Better, Best, GOAT) */}
+        {/* 3. Community Tier Rating: Rate Sami Fury (Bad, Good, Better, Best, GOAT) */}
         <RatingSection
           showToast={showToast}
         />
 
-        {/* 5. Reader Feedback & Video Suggestions Section */}
+        {/* 4. Fan Feedback & Video Suggestions (Starts Clean, Real Submissions Only) */}
         <FeedbackSection
           feedbacks={feedbacks}
           onAddFeedback={handleAddFeedback}

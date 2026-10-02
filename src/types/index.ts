@@ -1,3 +1,11 @@
+export interface YouTubeVideo {
+  id: string;
+  videoId: string;
+  title: string;
+  url: string;
+  thumbnail: string;
+}
+
 export interface SocialLink {
   id: string;
   name: string;

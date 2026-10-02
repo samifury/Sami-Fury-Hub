@@ -97,14 +97,14 @@ export default function HeroSection({ onOpenShare, showToast }: HeroSectionProps
 
   return (
     <section className="relative w-full pt-4 pb-8 sm:pb-10">
-      {/* Hero Banner Container */}
+      {/* Hero Banner Container - Sami Fury Hub */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative w-full h-48 sm:h-64 md:h-76 rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-800/80 shadow-2xl bg-slate-950">
+        <div className="relative w-full h-52 sm:h-68 md:h-80 lg:h-96 rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-800/80 shadow-2xl bg-slate-950 group">
           <img
             src={CREATOR_PROFILE.bannerImage}
-            alt="Sami Fury Minecraft Landscape Banner"
+            alt="Sami Fury Hub Official Banner"
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover object-center filter brightness-90 contrast-110"
+            className="w-full h-full object-cover object-center filter brightness-95 contrast-110 transform transition-transform duration-700 group-hover:scale-102"
             onError={(e) => {
               (e.currentTarget as HTMLElement).style.display = 'none';
             }}
@@ -113,11 +113,26 @@ export default function HeroSection({ onOpenShare, showToast }: HeroSectionProps
           <div className="absolute inset-0 bg-gradient-to-t from-[#08090d] via-black/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#08090d]/60 via-transparent to-red-950/20" />
 
-          {/* Top banner tag */}
+          {/* Top-left Banner Tag: Sami Fury Hub */}
+          <div className="absolute top-4 left-4 flex items-center gap-2">
+            <span className="flex items-center gap-2 px-3.5 py-1.5 text-xs font-black tracking-wider uppercase text-amber-300 bg-slate-950/80 backdrop-blur-md rounded-xl border border-amber-400/40 shadow-lg shadow-amber-500/10">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              <span>SAMI FURY HUB</span>
+            </span>
+          </div>
+
+          {/* Top-right banner tag: Minecraft Creator */}
           <div className="absolute top-4 right-4 flex items-center gap-2">
-            <span className="flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-red-300 bg-black/60 backdrop-blur-md rounded-lg border border-red-500/30">
+            <span className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-red-300 bg-black/70 backdrop-blur-md rounded-xl border border-red-500/30">
               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
               <span>MINECRAFT YOUTUBER</span>
+            </span>
+          </div>
+
+          {/* Banner bottom branding ribbon */}
+          <div className="absolute bottom-4 right-4 hidden sm:flex items-center gap-2">
+            <span className="px-3 py-1 text-[11px] font-bold tracking-widest uppercase text-slate-300 bg-black/50 backdrop-blur-md rounded-lg border border-slate-700/50">
+              Official Hub · 2026
             </span>
           </div>
         </div>
@@ -324,7 +339,7 @@ export default function HeroSection({ onOpenShare, showToast }: HeroSectionProps
                 </div>
               </a>
 
-              {/* 3. Instagram Followers */}
+              {/* 3. Instagram Status */}
               <a
                 href={instaLink?.url || 'https://www.instagram.com/sami_fury_official?igsh=MXVwMWFlZzhpbjhobw=='}
                 target="_blank"
@@ -339,11 +354,12 @@ export default function HeroSection({ onOpenShare, showToast }: HeroSectionProps
                   </span>
                 </div>
                 <div>
-                  <p className="text-2xl sm:text-3xl font-black text-white tabular-nums tracking-tight">
-                    {stats.instagramFollowers}
+                  <p className="text-lg sm:text-xl font-black text-white tracking-tight truncate font-mono">
+                    @sami_fury_official
                   </p>
-                  <p className="text-xs text-slate-400 font-medium mt-0.5">
-                    Followers
+                  <p className="text-xs text-pink-400 font-medium mt-0.5 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-pink-500 animate-pulse" />
+                    <span>Official Profile</span>
                   </p>
                 </div>
               </a>
