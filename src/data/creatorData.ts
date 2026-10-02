@@ -1,0 +1,211 @@
+import { SocialLink, SocialUpdate, CommunityUpdate, ReaderFeedback, TierVoteState } from '../types/index.ts';
+
+export const CREATOR_PROFILE = {
+  name: 'Sami Fury',
+  handle: '@samifuryofficial',
+  avatarImage: '/src/assets/images/sami_fury_official_logo.jpg',
+  bannerImage: '/src/assets/images/sami_minecraft_banner_1790949118879.jpg',
+  setupImage: '/src/assets/images/sami_gaming_setup_1790947448610.jpg',
+  title: 'Minecraft YouTuber & Content Creator',
+  bio: "Welcome to the official social & updates portal for Minecraft YouTuber Sami Fury! Creating epic 100 Days Hardcore Survival challenges, mega builds, and community events on Sami's Empire SMP. Check out the latest updates below and share your thoughts!",
+  location: 'Global Minecraft Community',
+  email: 'sgprobd@gmail.com',
+  isLive: false,
+  nextStreamTime: 'Saturday at 8:00 PM UTC',
+  stats: [
+    { label: 'YouTube Subscribers', value: '766' },
+    { label: 'Discord Members', value: '152 (43 Online)' },
+    { label: 'Instagram Followers', value: '380+' },
+    { label: 'Facebook Followers', value: '565' },
+  ],
+  games: ['Minecraft Java', 'Minecraft Bedrock', 'Hardcore Survival', 'Custom SMP', 'Bedwars'],
+};
+
+// ONLY the official links requested by user
+export const INITIAL_SOCIAL_LINKS: SocialLink[] = [
+  {
+    id: 'youtube',
+    name: 'Sami Fury',
+    platform: 'youtube',
+    handle: '@samifuryofficial',
+    url: 'https://youtube.com/@samifuryofficial?si=sZ1ou7C0hae0scRP',
+    description: 'Main Minecraft YouTube channel. Watch 100 Days Hardcore Survival series, epic SMP episodes, mega builds, and entertaining challenges.',
+    badge: 'Main Focus / Official YouTube',
+    category: 'gaming',
+    isPrimary: true,
+    accentColor: '#FF0000',
+    followersOrMembers: '766 Subscribers',
+  },
+  {
+    id: 'discord',
+    name: "Sami's Empire",
+    platform: 'discord',
+    handle: 'discord.gg/K5f2Jnexf',
+    url: 'https://discord.gg/K5f2Jnexf',
+    description: 'Official Discord server [Actual Minecraft]! Join the SMP whitelist, talk in proximity voice lobbies, submit builds, and get video pings.',
+    badge: 'Actual Minecraft',
+    category: 'social',
+    isPrimary: true,
+    accentColor: '#5865F2',
+    followersOrMembers: '152 Members (43 Online)',
+  },
+  {
+    id: 'instagram',
+    name: 'Sami Fury',
+    platform: 'instagram',
+    handle: '@sami_fury_official',
+    url: 'https://www.instagram.com/sami_fury_official?igsh=MXVwMWFlZzhpbjhobw==',
+    description: 'Official Instagram profile. Sneak peeks of upcoming Minecraft builds, behind-the-scenes editing setup, stories, and channel updates.',
+    badge: 'Official Instagram',
+    category: 'social',
+    isPrimary: true,
+    accentColor: '#E1306C',
+    followersOrMembers: '380+ Followers',
+  },
+  {
+    id: 'facebook',
+    name: 'Sami Fury',
+    platform: 'facebook',
+    handle: 'fb.com/share/1CpqiUitDS',
+    url: 'https://www.facebook.com/share/1CpqiUitDS/',
+    description: 'Official Facebook page. Watch Minecraft video highlights, community posts, stream announcements, and interact with the fan group.',
+    badge: 'Official Facebook',
+    category: 'social',
+    isPrimary: true,
+    accentColor: '#1877F2',
+    followersOrMembers: '565 Followers',
+  },
+];
+
+// SOCIAL UPDATES (YouTube, Instagram, Facebook content updates)
+export const INITIAL_SOCIAL_UPDATES: SocialUpdate[] = [
+  {
+    id: 'soc-1',
+    platform: 'youtube',
+    title: '⛏️ 100 Days in Hardcore Minecraft: The Ancient Citadel (Episode 5)',
+    description: 'New full-length survival episode uploaded! Conquering the deep dark, building a mega automated amethyst base, and fighting 3 Withers simultaneously.',
+    date: '2 hours ago',
+    url: 'https://youtube.com/@samifuryofficial?si=sZ1ou7C0hae0scRP',
+    badge: 'New YouTube Video',
+    viewsOrLikes: '48.2K Views',
+  },
+  {
+    id: 'soc-2',
+    platform: 'instagram',
+    title: '📸 Behind the Scenes: Custom Shader Pack & Recording Setup',
+    description: 'Sneak peek of the custom graphics setup and timelapse footage of the new obsidian mountain fortress build coming in next week’s video.',
+    date: 'Yesterday',
+    url: 'https://www.instagram.com/sami_fury_official?igsh=MXVwMWFlZzhpbjhobw==',
+    badge: 'Instagram Reel',
+    viewsOrLikes: '14.8K Likes',
+  },
+  {
+    id: 'soc-3',
+    platform: 'youtube',
+    title: '🔥 YouTube Short: I Trapped 50 Pro Minecraft Players in Bedwars',
+    description: 'Quick hilarious clutch moment using invisible obsidian and custom launch pads in the middle island generator.',
+    date: '3 days ago',
+    url: 'https://youtube.com/@samifuryofficial?si=sZ1ou7C0hae0scRP',
+    badge: 'YouTube Shorts',
+    viewsOrLikes: '124K Views',
+  },
+  {
+    id: 'soc-4',
+    platform: 'facebook',
+    title: '💬 Community Q&A & Weekend Livestream Schedule Announcement',
+    description: 'Answering the top 20 questions from Facebook fans about channel growth, editing tips, and upcoming SMP seasons.',
+    date: '4 days ago',
+    url: 'https://www.facebook.com/share/1CpqiUitDS/',
+    badge: 'Facebook Post',
+    viewsOrLikes: '3.6K Reactions',
+  },
+];
+
+// COMMUNITY UPDATES (Sami's Empire Discord, SMP Server, Whitelist & Tournaments)
+export const INITIAL_COMMUNITY_UPDATES: CommunityUpdate[] = [
+  {
+    id: 'comm-1',
+    title: "🏰 Sami's Empire SMP Season 3 Whitelist Applications Open",
+    description: "The custom vanilla+ SMP server is expanding! We are accepting 50 new active builders and lore players this weekend. Head to #smp-whitelist on Discord to apply.",
+    date: 'Today',
+    type: 'Whitelist',
+    url: 'https://discord.gg/K5f2Jnexf',
+    badge: 'SMP Whitelist',
+    participantsOrMembers: '50 Slots Open',
+  },
+  {
+    id: 'comm-2',
+    title: '⚔️ Weekly Bedwars Squad Bracket in Sami’s Empire Discord',
+    description: 'Grab your 4-player team and register for the weekly community tournament! Winning squad gets VIP Discord roles and custom in-game cosmetics.',
+    date: 'Tomorrow at 7 PM UTC',
+    type: 'Bedwars',
+    url: 'https://discord.gg/K5f2Jnexf',
+    badge: 'Tournament',
+    participantsOrMembers: '16 Teams Registered',
+  },
+  {
+    id: 'comm-3',
+    title: "🎉 Discord Milestone: 150+ Members in Sami's Empire!",
+    description: "Our community Discord is expanding rapidly! 152 members joined and 40+ daily active in proximity voice channels. New server roles & emotes unlocked.",
+    date: 'Recent',
+    type: 'Milestone',
+    url: 'https://discord.gg/K5f2Jnexf',
+    badge: 'Discord Milestone',
+    participantsOrMembers: '152 Members',
+  },
+  {
+    id: 'comm-4',
+    title: '🐲 Realm Community Event: The Ender Dragon Raid Night',
+    description: 'All whitelisted members join voice call #general-voice-1 this Sunday as we respawn the dragon 4 times and build the outer islands gateway hub.',
+    date: 'Sunday 8 PM UTC',
+    type: 'SMP Server',
+    url: 'https://discord.gg/K5f2Jnexf',
+    badge: 'Realm Event',
+    participantsOrMembers: 'All Members Welcome',
+  },
+];
+
+// READER FEEDBACK (Constructive feedback & video ideas from fans)
+export const INITIAL_READER_FEEDBACK: ReaderFeedback[] = [
+  {
+    id: 'fb-1',
+    name: 'CraftMaster_99',
+    category: 'Video Idea',
+    ratingTier: 'GOAT',
+    message: 'Bro, you should definitely do "100 Days in an Ocean Only World" with amplified monuments! Your editing style and commentary would make it legendary!',
+    timestamp: 'Just now',
+  },
+  {
+    id: 'fb-2',
+    name: 'PixelKnight_BD',
+    category: 'SMP Suggestion',
+    ratingTier: 'Best',
+    message: 'Loving the new SMP Season 3 rules! Could we have a designated shopping district island with diamond trust economy like Hermitcraft?',
+    timestamp: '2 hours ago',
+  },
+  {
+    id: 'fb-3',
+    name: 'ShadowMiner',
+    category: 'Website Feedback',
+    ratingTier: 'GOAT',
+    message: 'This official website is insanely clean! Having direct links to YouTube and the actual Minecraft Discord in one place makes it so easy to stay updated.',
+    timestamp: '5 hours ago',
+  },
+  {
+    id: 'fb-4',
+    name: 'FuryFanatic',
+    category: 'General Cheer',
+    ratingTier: 'Best',
+    message: 'Keep going Sami! Been following since your first videos, watching you grow past 750 subs and building the Discord community is incredible. Respect from Bangladesh! 🇧🇩🔥',
+    timestamp: '1 day ago',
+  },
+];
+
+// INITIAL TIER VOTES
+export const INITIAL_TIER_VOTES: TierVoteState = {
+  bad: 14,
+  good: 135,
+  better: 420,
+  best: 1180,
+  goat: 3890,
+};

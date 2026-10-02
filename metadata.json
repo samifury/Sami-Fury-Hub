@@ -1,0 +1,6 @@
+{
+  "name": "Sami Fury - Official Gamer & Social Hub",
+  "description": "The official social hub and links portal for Minecraft YouTuber Sami Fury. Access YouTube videos, Sami's Empire Discord [Actual Minecraft], Instagram, Facebook, SMP announcements, and setup gear.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
