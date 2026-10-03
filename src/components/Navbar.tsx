@@ -12,6 +12,7 @@ export default function Navbar({ onOpenShare }: NavbarProps) {
   const navLinks = [
     { label: 'Official Links', href: '#links' },
     { label: 'Latest Uploads', href: '#latest-uploads' },
+    { label: 'Fan Art & Media', href: '#fan-art' },
     { label: 'Rate Sami', href: '#rating' },
     { label: 'Fan Feedback', href: '#feedback' },
   ];

@@ -23,8 +23,8 @@ export default function HeroSection({ onOpenShare, showToast }: HeroSectionProps
   const [stats, setStats] = useState<LiveStatsData>({
     youtubeSubs: '766',
     discordMembers: '152',
-    discordOnline: '43',
-    instagramFollowers: '380+',
+    discordOnline: '44',
+    instagramFollowers: '385',
     facebookFollowers: '565',
     isLive: true,
   });
@@ -38,13 +38,13 @@ export default function HeroSection({ onOpenShare, showToast }: HeroSectionProps
         setStats({
           youtubeSubs: data.youtube?.subscribers || '766',
           discordMembers: data.discord?.members || '152',
-          discordOnline: data.discord?.online || '43',
-          instagramFollowers: data.instagram?.followers || '380+',
+          discordOnline: data.discord?.online || '44',
+          instagramFollowers: data.instagram?.followers || '385',
           facebookFollowers: data.facebook?.followers || '565',
           isLive: true,
         });
         if (isManual) {
-          showToast(`Synced real-time stats! (YT: ${data.youtube?.subscribers || '766'}, Discord: ${data.discord?.members || '152'})`);
+          showToast(`Synced real-time stats! (YT: ${data.youtube?.subscribers || '766'}, Discord: ${data.discord?.members || '152'}, Insta: ${data.instagram?.followers || '385'}, FB: ${data.facebook?.followers || '565'})`);
         }
         return;
       }
@@ -339,7 +339,7 @@ export default function HeroSection({ onOpenShare, showToast }: HeroSectionProps
                 </div>
               </a>
 
-              {/* 3. Instagram Status */}
+              {/* 3. Instagram Followers - Real Time */}
               <a
                 href={instaLink?.url || 'https://www.instagram.com/sami_fury_official?igsh=MXVwMWFlZzhpbjhobw=='}
                 target="_blank"
@@ -348,18 +348,23 @@ export default function HeroSection({ onOpenShare, showToast }: HeroSectionProps
               >
                 <div className="flex items-center justify-between mb-2">
                   <Instagram className="w-5 h-5 text-[#E1306C] group-hover:scale-110 transition-transform" />
-                  <span className="flex items-center gap-1 text-[11px] font-bold text-pink-400 uppercase tracking-wider">
+                  <span className="flex items-center gap-1.5 text-[11px] font-bold text-pink-400 uppercase tracking-wider">
+                    <span className="w-1.5 h-1.5 rounded-full bg-pink-500 animate-pulse" />
                     <span>Instagram</span>
                     <ExternalLink className="w-3 h-3 text-pink-400/70" />
                   </span>
                 </div>
                 <div>
-                  <p className="text-lg sm:text-xl font-black text-white tracking-tight truncate font-mono">
-                    @sami_fury_official
-                  </p>
-                  <p className="text-xs text-pink-400 font-medium mt-0.5 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-pink-500 animate-pulse" />
-                    <span>Official Profile</span>
+                  <div className="flex items-baseline gap-1.5">
+                    <p className="text-2xl sm:text-3xl font-black text-white tabular-nums tracking-tight">
+                      {stats.instagramFollowers}
+                    </p>
+                    <span className="text-[10px] font-bold text-pink-400">
+                      Followers
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-400 font-mono mt-0.5 truncate">
+                    @sami_fury_official (Live)
                   </p>
                 </div>
               </a>
@@ -373,17 +378,23 @@ export default function HeroSection({ onOpenShare, showToast }: HeroSectionProps
               >
                 <div className="flex items-center justify-between mb-2">
                   <Facebook className="w-5 h-5 text-[#1877F2] group-hover:scale-110 transition-transform" />
-                  <span className="flex items-center gap-1 text-[11px] font-bold text-blue-400 uppercase tracking-wider">
+                  <span className="flex items-center gap-1.5 text-[11px] font-bold text-blue-400 uppercase tracking-wider">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
                     <span>Facebook</span>
                     <ExternalLink className="w-3 h-3 text-blue-400/70" />
                   </span>
                 </div>
                 <div>
-                  <p className="text-2xl sm:text-3xl font-black text-white tabular-nums tracking-tight">
-                    {stats.facebookFollowers}
-                  </p>
+                  <div className="flex items-baseline gap-1.5">
+                    <p className="text-2xl sm:text-3xl font-black text-white tabular-nums tracking-tight">
+                      {stats.facebookFollowers}
+                    </p>
+                    <span className="text-[10px] font-bold text-blue-400">
+                      Followers
+                    </span>
+                  </div>
                   <p className="text-xs text-slate-400 font-medium mt-0.5">
-                    Followers
+                    Followers (Live)
                   </p>
                 </div>
               </a>

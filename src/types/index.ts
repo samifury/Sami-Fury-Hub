@@ -20,28 +20,6 @@ export interface SocialLink {
   followersOrMembers?: string;
 }
 
-export interface SocialUpdate {
-  id: string;
-  platform: 'youtube' | 'instagram' | 'facebook';
-  title: string;
-  description: string;
-  date: string;
-  url: string;
-  badge: string;
-  viewsOrLikes?: string;
-}
-
-export interface CommunityUpdate {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  type: 'SMP Server' | 'Discord Event' | 'Bedwars' | 'Whitelist' | 'Milestone';
-  url: string;
-  badge: string;
-  participantsOrMembers?: string;
-}
-
 export interface ReaderFeedback {
   id: string;
   name: string;
@@ -59,4 +37,30 @@ export interface TierVoteState {
   better: number;
   best: number;
   goat: number;
+}
+
+export type FanMediaType = 'image' | 'png' | 'gif' | 'video' | 'youtube';
+
+export interface FanArtPost {
+  id: string;
+  authorName: string;
+  authorHandle?: string;
+  title: string;
+  caption?: string;
+  mediaType: FanMediaType;
+  mediaUrl: string; // URL or base64 data URL
+  thumbnailUrl?: string;
+  category: 'Fan Art' | 'Pixel Art / PNG' | 'GIF / Animation' | 'Gameplay Clip' | 'Meme' | 'Skin / Build';
+  likesCount: number;
+  likedByMe?: boolean;
+  createdAt: string;
+}
+
+export interface LiveStatsData {
+  youtubeSubs: string;
+  discordMembers: string;
+  discordOnline: string;
+  instagramFollowers: string;
+  facebookFollowers: string;
+  isLive: boolean;
 }

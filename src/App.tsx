@@ -3,6 +3,7 @@ import Navbar from './components/Navbar.tsx';
 import HeroSection from './components/HeroSection.tsx';
 import LinksSection from './components/LinksSection.tsx';
 import LatestUploadsSection from './components/LatestUploadsSection.tsx';
+import FanArtSection from './components/FanArtSection.tsx';
 import RatingSection from './components/RatingSection.tsx';
 import FeedbackSection from './components/FeedbackSection.tsx';
 import ShareModal from './components/ShareModal.tsx';
@@ -11,9 +12,10 @@ import Toast from './components/Toast.tsx';
 
 import { 
   INITIAL_SOCIAL_LINKS, 
-  INITIAL_READER_FEEDBACK 
+  INITIAL_READER_FEEDBACK,
+  INITIAL_FAN_ARTS
 } from './data/creatorData.ts';
-import { ReaderFeedback } from './types/index.ts';
+import { ReaderFeedback, FanArtPost } from './types/index.ts';
 
 export default function App() {
   const [toastMessage, setToastMessage] = useState<string>('');
@@ -30,6 +32,17 @@ export default function App() {
     return INITIAL_READER_FEEDBACK;
   });
 
+  // Fan art posts state with localStorage persistence
+  const [fanArtPosts, setFanArtPosts] = useState<FanArtPost[]>(() => {
+    try {
+      const saved = localStorage.getItem('sami_fury_fan_arts_v1');
+      if (saved) return JSON.parse(saved);
+    } catch {
+      // fallback
+    }
+    return INITIAL_FAN_ARTS;
+  });
+
   const showToast = (msg: string) => {
     setToastMessage(msg);
     setTimeout(() => {
@@ -42,6 +55,47 @@ export default function App() {
     setFeedbacks(updated);
     try {
       localStorage.setItem('sami_fury_fan_feedback_clean', JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
+  };
+
+  const handleAddFanArt = (newPost: FanArtPost) => {
+    const updated = [newPost, ...fanArtPosts];
+    setFanArtPosts(updated);
+    try {
+      localStorage.setItem('sami_fury_fan_arts_v1', JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
+  };
+
+  const handleToggleLike = (id: string) => {
+    const updated = fanArtPosts.map((post) => {
+      if (post.id === id) {
+        const isLiked = !post.likedByMe;
+        return {
+          ...post,
+          likedByMe: isLiked,
+          likesCount: isLiked ? post.likesCount + 1 : Math.max(0, post.likesCount - 1),
+        };
+      }
+      return post;
+    });
+    setFanArtPosts(updated);
+    try {
+      localStorage.setItem('sami_fury_fan_arts_v1', JSON.stringify(updated));
+    } catch {
+      // ignore
+    }
+  };
+
+  const handleDeleteFanArt = (id: string) => {
+    const updated = fanArtPosts.filter((post) => post.id !== id);
+    setFanArtPosts(updated);
+    try {
+      localStorage.setItem('sami_fury_fan_arts_v1', JSON.stringify(updated));
+      showToast('Creation removed from gallery');
     } catch {
       // ignore
     }
@@ -77,12 +131,21 @@ export default function App() {
           showToast={showToast}
         />
 
-        {/* 3. Community Tier Rating: Rate Sami Fury (Bad, Good, Better, Best, GOAT) */}
+        {/* 3. Fan Art & Media Community Showcase (Photos, PNGs, GIFs, Videos) */}
+        <FanArtSection
+          posts={fanArtPosts}
+          onAddPost={handleAddFanArt}
+          onToggleLike={handleToggleLike}
+          onDeletePost={handleDeleteFanArt}
+          showToast={showToast}
+        />
+
+        {/* 4. Community Tier Rating: Rate Sami Fury (Bad, Good, Better, Best, GOAT) */}
         <RatingSection
           showToast={showToast}
         />
 
-        {/* 4. Fan Feedback & Video Suggestions (Starts Clean, Real Submissions Only) */}
+        {/* 5. Fan Feedback & Video Suggestions (Starts Clean, Real Submissions Only) */}
         <FeedbackSection
           feedbacks={feedbacks}
           onAddFeedback={handleAddFeedback}
